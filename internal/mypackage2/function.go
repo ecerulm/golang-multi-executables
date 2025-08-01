@@ -2,6 +2,6 @@ package mypackage2
 
 import "fmt"
 
-func Myfunction() {
-	fmt.Println("package2.function")
+func MyFunction() {
+	fmt.Println("mypackage2.MyFunction")
 }
