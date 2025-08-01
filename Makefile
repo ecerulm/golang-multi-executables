@@ -20,6 +20,7 @@ clean:
 # There is no need of maintaing the explicit dependencies here just to avoid calling
 # go build, when go build can figure out the dependencies itself.
 bin/binary1: cmd/binary1/*.go pkg/*/*.go
+	$(info Only called if .go files are newer that ./cmd/binary1)
 	go build -o bin/ ./cmd/binary1
 
 # This is a .PHONY target it shows that we can run go build always
