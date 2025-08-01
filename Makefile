@@ -16,12 +16,16 @@ clean:
 
 # This shows how we can tell make to only run this target if  a .go
 # file changes.
+# Although this is unnecesary because go build already does build avoidance.
+# There is no need of maintaing the explicit dependencies here just to avoid calling
+# go build, when go build can figure out the dependencies itself.
 bin/binary1: cmd/binary1/*.go pkg/*/*.go
-# we don't need to do much because go build already does build avoidance
 	go build -o bin/ ./cmd/binary1
 
 # This is a .PHONY target it shows that we can run go build always
 # since go build does it's own smart dependency analysis and
 # will only compile if here are changes in the source code
 bin/binary2:
+# we don't need to do much because go build already does build avoidance
+	$(info Always call go build because go build it's fast if the .go files have not changed)
 	go build -o bin/ ./cmd/binary2
