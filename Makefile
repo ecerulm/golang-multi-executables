@@ -4,7 +4,7 @@
 # go build is already smart enough to rebuild only when sources changes
 # so we can make bin/binary2 a PHONY target so it always ru go build
 # https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
-.PHONY: all clean bin/binary2
+.PHONY: all clean bin/binary2 format
 
 all: bin/binary1 bin/binary2
 
@@ -30,3 +30,7 @@ bin/binary2:
 # we don't need to do much because go build already does build avoidance
 	$(info Always call go build because go build it's fast if the .go files have not changed)
 	go build -o bin/ ./cmd/binary2
+
+
+format:
+	go fmt $$(find ./internal/ ./pkg ./cmd -type d -depth 1)
