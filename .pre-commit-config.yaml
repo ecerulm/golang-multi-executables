@@ -12,4 +12,4 @@ repos:
         name: Format file
         language: system
         files: '\.go$'
-        entry: go fmt
+        entry: gofmt -w
